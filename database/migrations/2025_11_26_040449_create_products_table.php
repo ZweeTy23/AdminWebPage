@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("title",190);
             $table->string("description",300);
             $table->string("img",200);//480*480
-            $table->string("cocd",10)->nullable();
+            $table->string("code",10)->nullable();
             $table->text("details")->nullable();
             $table->integer("stock")->default(0);
             $table->decimal("price",10,2)->default(0.00);
