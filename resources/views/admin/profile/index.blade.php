@@ -3,11 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-sm-3">
-            <ul>
-                <li><a href="/admin/profile">Profile</a></li>
-            </ul>
-            </div>
+            @include('admin.aside')
+
             <div class="col-md-9">
 
                 <div class="card">
@@ -16,7 +13,7 @@
                     </div>
                     <div class="card-body">
                         <!-- Form -->
-                        <form action="{{route('profile.update', $profile->id)}}" method="post">
+                        <form action="{{route('profile.update', $profile->id)}}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -29,7 +26,7 @@
 
                                     <div class="form-group">
                                         <label for="description">Description:</label>
-                                        <textarea  name="description" class="form-control" required>"{{$profile->description}}"</textarea>
+                                        <textarea  name="description" class="form-control" required>{{$profile->description}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +63,7 @@
 
                             <div class="form-group">
                                 <label for="facebook">Facebook:</label>
-                                <input type="url" name="Facebook" class="form-control" value="{{$profile->facebook}}">
+                                <input type="url" name="facebook" class="form-control" value="{{$profile->facebook}}">
                             </div>
 
                             <div class="form-group">
@@ -93,7 +90,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <label for="seo">Seo:</label><br>
-                                        <img src="/img/profile/{{$profile->seo}}" alt="Seo" width="48" height="32"><br><br>
+                                        <img src="/img/profile/{{$profile->seo}}" alt="seo" width="48" height="32"><br><br>
                                         <input type="file" name="seo" class="form-control">
                                     </div>
                                 </div>
