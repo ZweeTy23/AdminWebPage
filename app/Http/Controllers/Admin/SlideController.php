@@ -53,8 +53,9 @@ class SlideController extends Controller
     public function update(Request $request, $id){
 
         $slide = Slide::find($id);
-        $slide->fill($request->all());
         $img_previous = $slide->img;
+        $slide->fill($request->all());
+
 
         if ($request->hasFile('img')) {
             $previous_path = public_path('img/slide/' . $img_previous);

@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SlideController;
@@ -11,6 +15,10 @@ Auth::routes();
 Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
     Route::resource('/profile', ProfileController::class);
     Route::resource('/slide', SlideController::class);
+    Route::resource('/page', PageController::class);
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/product', ProductController::class);
+    Route::resource('/post', PostController::class);
 });
 
 
