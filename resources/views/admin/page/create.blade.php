@@ -1,4 +1,3 @@
-
 @extends('layouts.admin')
 
 @section('content')
@@ -11,8 +10,8 @@
 
                     <div class="card-body py-5">
                         <form action="{{route('page.store', null)}}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('POST')
+                            @csrf
+                            @method('POST')
 
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -49,12 +48,12 @@
 
                             <div class="form-group">
                                 <label for="texttop">Top Text:</label>
-                                <textarea name="texttop" class="form-control"></textarea>
+                                <textarea name="texttop" id="texttop" class="form-control"></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="textbottom">Bottom Text:</label>
-                                <textarea name="textbottom" class="form-control"></textarea>
+                                <textarea name="textbottom" id="textbottom" class="form-control"></textarea>
                             </div>
 
                             <input type="submit" value="Save" class="btn btn-dark my-3">
@@ -65,4 +64,18 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#texttop'))
+                .catch(error => console.error(error));
+
+            ClassicEditor
+                .create(document.querySelector('#textbottom'))
+                .catch(error => console.error(error));
+        </script>
+    @endpush
+
+
 @endsection

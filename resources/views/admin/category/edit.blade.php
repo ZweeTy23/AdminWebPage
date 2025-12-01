@@ -47,14 +47,14 @@
                                 <input type="number" name="position" value="{{$category->position}}" class="form-control">
                             </div>
 
-                            <div class="form-group">
+                            <<div class="form-group">
                                 <label for="texttop">Top Text:</label>
-                                <textarea name="texttop" class="form-control">{{$category->texttop}}</textarea>
+                                <textarea name="texttop" id="texttop" class="form-control">{{$category->texttop}}</textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="textbottom">Bottom Text:</label>
-                                <textarea name="textbottom" class="form-control">{{$category->textbottom}}</textarea>
+                                <textarea name="textbottom" id="textbottom" class="form-control">{{$category->textbottom}}</textarea>
                             </div>
 
                             <input type="submit" value="Edit" class="btn btn-dark my-3">
@@ -65,4 +65,14 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#texttop'))
+                .catch(error => console.error(error));
+
+            ClassicEditor
+                .create(document.querySelector('#textbottom'))
+                .catch(error => console.error(error));
+        </script>
 @endsection

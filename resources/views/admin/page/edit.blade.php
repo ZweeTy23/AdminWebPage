@@ -1,4 +1,3 @@
-
 @extends('layouts.admin')
 
 @section('content')
@@ -15,18 +14,18 @@
                             @method('PUT')
 
                             <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="title">Title:</label>
-                                    <input type="text" name="title" class="form-control" value="{{$page->title}}" required>
-                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="title">Title:</label>
+                                        <input type="text" name="title" class="form-control" value="{{$page->title}}" required>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="description">Description:</label>
-                                    <textarea  name="description" class="form-control" required>{{$page->description}}</textarea>
+                                    <div class="form-group">
+                                        <label for="description">Description:</label>
+                                        <textarea  name="description" class="form-control" required>{{$page->description}}</textarea>
+                                    </div>
                                 </div>
                             </div>
-                    </div>
                             <div class="form-group my-3">
                                 <div class="card">
                                     <div class="card-body">
@@ -49,12 +48,12 @@
 
                             <div class="form-group">
                                 <label for="texttop">Top Text:</label>
-                                <textarea name="texttop" class="form-control">{{$page->texttop}}</textarea>
+                                <textarea name="texttop" id="texttop" class="form-control">{{$page->texttop}}</textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="textbottom">Bottom Text:</label>
-                                <textarea name="textbottom" class="form-control">{{$page->textbottom}}</textarea>
+                                <textarea name="textbottom" id="textbottom" class="form-control">{{$page->textbottom}}</textarea>
                             </div>
 
                             <input type="submit" value="Edit" class="btn btn-dark my-3">
@@ -65,4 +64,18 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#texttop'))
+                .catch(error => console.error(error));
+
+            ClassicEditor
+                .create(document.querySelector('#textbottom'))
+                .catch(error => console.error(error));
+        </script>
+    @endpush
+
+
 @endsection

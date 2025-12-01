@@ -59,7 +59,15 @@
                                     <label for="direction">Direction:</label>
                                     <input type="text" name="direction" class="form-control" value="{{$profile->direction}}" required>
                                 </div>
+
+                                <div class="col-sm-6">
+                                    <label for="map">Map:</label>
+                                    <textarea name="map" class="form-control"  required>{{$profile->map}}</textarea>
+                                </div>
+
                             </div>
+
+
 
                             <div class="form-group">
                                 <label for="facebook">Facebook:</label>

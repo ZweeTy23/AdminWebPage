@@ -49,7 +49,7 @@
 
                             <div class="form-group">
                                 <label for="details">Details:</label>
-                                <textarea name="details" class="form-control">={{$product->details}}</textarea>
+                                <textarea name="details" class="form-control">{{$product->details}}</textarea>
                             </div>
 
                             <div class="form-group">
