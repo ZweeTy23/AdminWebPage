@@ -1,4 +1,3 @@
-
 @extends('layouts.admin')
 
 @section('content')
@@ -6,39 +5,63 @@
         <div class="row justify-content-center">
             @include('admin.aside')
             <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">Blog</div>
+                <div class="card shadow-lg border-0" style="background: #121212; color: #fff;">
+                    <div class="card-header border-bottom border-secondary bg-transparent py-3 d-flex justify-content-between align-items-center">
+                        <h5 class="m-0 text-uppercase fw-bold" style="letter-spacing: 2px; color: #00f2ea;">
+                            Journal Posts //
+                        </h5>
+                        <a href="{{route('post.create')}}" class="btn btn-sm btn-outline-light rounded-0 text-uppercase fw-bold px-4">
+                            + New Post
+                        </a>
+                    </div>
 
-                    <div class="card-body py-5">
-                        <a href="{{route('post.create')}}" class="btn btn-dark">New Post</a>
-                        <table class="table table-striped">
-                            <thead>
-                            <th>Order</th>
-                            <th>Name</th>
-                            <th>Action</th>
-                            </thead>
-
-                            <tbody>
-                            @forelse($posts as $item)
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover mb-0 align-middle" style="background: transparent;">
+                                <thead class="text-uppercase small text-muted border-bottom border-secondary">
                                 <tr>
-                                    <td>{{$item->position}}</td>
-                                    <td>{{$item->name}}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                        <a href="{{route('post.edit',$item->id)}}" class="btn btn-dark">Edit Post</a>
-                                        <form action="{{ route('post.destroy', $item->id) }}" method="POST" style="display:inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                        </form>
-                                        </div>
-                                    </td>
+                                    <th class="py-3 ps-4" width="10%">Order</th>
+                                    <th class="py-3" width="50%">Title / Name</th>
+                                    <th class="py-3 text-end pe-4">Actions</th>
                                 </tr>
-                            @empty
-                                <tr><td colspan="3">No Data</td></tr>
-                            @endforelse
-                            </tbody>
-                        </table>
+                                </thead>
+
+                                <tbody>
+                                @forelse($posts as $item)
+                                    <tr>
+                                        <td class="ps-4 fw-bold text-secondary">#{{$item->position}}</td>
+                                        <td>
+                                            <span class="fw-bold fs-5">{{$item->title}}</span>
+                                            @if($item->name)
+                                                <br><small class="text-muted">Slug: {{ $item->name }}</small>
+                                            @endif
+                                        </td>
+                                        <td class="text-end pe-4">
+                                            <div class="btn-group" role="group">
+                                                <a href="{{route('post.edit',$item->id)}}" class="btn btn-sm btn-outline-light rounded-0" title="Edit">
+                                                    Edit
+                                                </a>
+                                                <form action="{{ route('post.destroy', $item->id) }}" method="POST" style="display:inline-block;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger rounded-0 border-start-0" onclick="return confirm('Are you sure you want to delete this post?')">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3" class="text-center py-5 text-muted">
+                                            <div class="mb-2" style="font-size: 2rem; opacity: 0.3;">📝</div>
+                                            No posts found. Start writing something new.
+                                        </td>
+                                    </tr>
+                                @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

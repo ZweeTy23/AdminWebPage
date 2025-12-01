@@ -1,8 +1,106 @@
-// Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+// 1. Importar Tipografía "Gamer/Elegant" (Outfit)
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap');
 
-// Variables
-@import 'variables';
+// 2. Definir Variables de Color Slym-X
+$body-bg: #050505;         // Negro casi puro
+$body-color: #e0e0e0;      // Blanco suave para texto
+$primary: #00f2ea;         // Cyan Neón (Color de acento)
+$dark-card: #121212;       // Fondo de tarjetas
+$border-color: #333;       // Bordes sutiles
 
-// Bootstrap
+// 3. Importar Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+// 4. Estilos Globales Personalizados
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: $body-bg;
+    color: $body-color;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+// Navbar Personalizado
+.navbar {
+    background-color: rgba(5, 5, 5, 0.95) !important; // Fondo oscuro semi-transparente
+    border-bottom: 1px solid $border-color;
+    backdrop-filter: blur(10px);
+
+    .navbar-brand {
+        color: #fff !important;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .nav-link {
+        color: #aaa !important;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+
+        &:hover {
+            color: $primary !important;
+            text-shadow: 0 0 10px rgba($primary, 0.5); // Efecto neón suave
+        }
+    }
+}
+
+// Tarjetas Oscuras (Minimalistas)
+.card {
+    background-color: $dark-card;
+    border: 1px solid $border-color;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .card-body {
+        position: relative;
+        z-index: 2;
+    }
+
+    &:hover {
+        transform: translateY(-5px);
+        border-color: $primary; // Borde se ilumina al pasar el mouse
+        box-shadow: 0 10px 30px -10px rgba(0, 242, 234, 0.2);
+    }
+}
+
+// Botones Personalizados
+.btn-slym {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 0; // Bordes cuadrados (más técnico/gamer)
+    padding: 10px 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    &:hover {
+        background-color: $primary;
+        border-color: $primary;
+        color: #000; // Texto negro para contraste
+        box-shadow: 0 0 15px $primary;
+    }
+}
+
+.btn-slym-outline {
+    border: 1px solid $border-color;
+    color: #aaa;
+    background: $dark-card;
+
+    &:hover {
+        border-color: #fff;
+        color: #fff;
+    }
+}
+
+// Títulos
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #fff;
+}
